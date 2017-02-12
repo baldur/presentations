@@ -1,0 +1,273 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>Mind the ops gap</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+                  <h1>Mind the ops gap</h1>
+                  <h3 class="fragment">a case for building ops chops in your development team</h3>
+                </section>
+				<section>
+                  <h1 style="text-transform: lowercase;">whoami</h1>
+                </section>
+
+				<section>
+                  <img style="border: 0; background: transparent; box-shadow: none" src="http://cdn.recogmedia.net/wp-content/uploads/sites/8/2016/09/Architizer.png" />
+                  <p>We’re hiring … just saying</p>
+                </section>
+
+				<section>
+                  <h1>University of Iceland</h1>
+                  <p>BA in Literature</p>
+                </section>
+
+				<section>
+                  <h1>My first ever computer</h1>
+				  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/ZXSpectrum48k.jpg/1600px-ZXSpectrum48k.jpg" />
+				</section>
+				<!--
+				16k memory expandable to 128k
+				-->
+
+				<section>
+                  <img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/ad/Jetpac_Coverart.png/250px-Jetpac_Coverart.png" />
+				</section>
+
+				<section>
+                  <img src="https://i.ytimg.com/vi/hxLyr5Ka_pc/hqdefault.jpg" />
+				</section>
+
+                <section>
+                  <h2>Startups in NYC</h2>
+				</section>
+
+                <section>
+                  <img style="border: 0; background: transparent; box-shadow: none" src="http://www.coolmarketingthoughts.com/images/motionbox.jpg" />
+				</section>
+                <section>
+                  <h2>Happy &hearts; day</h2>
+                  <img style="border: 0; background: transparent; box-shadow: none" src="http://www.howaboutwe.com/img/clean_logo.png" />
+				</section>
+                <section>
+                  <img style="border: 0; background: transparent; box-shadow: none" src="data:image/png;base64,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" /> 
+     </span>
+				</section>
+<!--
+Motionbox, Patch, <3 howaboutwe <3, mapzen, Architizer
+Thing about being self taught you have to keep moving to learn. Spend 2-3 years in each place … if you’re not being pushed find another gig … lots of good jobs out there HINT HINT
+-->
+
+				  <section>
+                    <h2>I've had Some 'real' jobs too</h2>
+				  </section>
+
+                  <section>
+                    <img style="border: 0; background: transparent; box-shadow: none" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/American_Express_logo.svg/200px-American_Express_logo.svg.png" />
+                    <img style="border: 0; background: transparent; box-shadow: none" src="https://betagammasigma.org/image/kaplan-logo.png" />
+                  </section>
+
+                  <section>
+                    <img style="border: 0; background: transparent; box-shadow: none" src="https://www.nordiccapital.com/media/51539/vizrt_logo_rgb.png" />
+                  </section>
+<!--
+Basically means that I know how responsible companies with proper funding work like which is a good gauge for when you have to operate with a fraction of the budget they have. I.e. if big companies don’t consider something worth spending money on … does it make sense for startups to?
+Also did you know that the swedish army mobilizes if the news isn’t on time, that wasn’t stressful at all ;) Anectodal I have not been able to confirm this but I was really scared
+-->
+                  <section>
+                    <h4>Due to my diverse experience I always feel very confident bridging gaps between groups with complementary skillset</h4>
+                    <p>And it's not that hard .. you just need some prefessional empathy</p>
+                    <p>What is confusing to people who don't know that particular thing?</p>
+                  </section>
+
+<section>
+Close Knit, small productive teams aka startups
+</section>
+
+<!--
+I’ve seen a lot of team configuration. I really enjoy being on small productive teams that make cool stuff which makes someone's life (work) more pleasurable and able to achieve more. Multiplying technology … enabling others in my current place Architizer
+-->
+
+<section>
+Any way … where was I
+</section>
+
+<section>
+Making the case for building ops chops in your development team
+</section>
+
+<!--
+Who do I have to make that case to?
+Everyone, developers themselves and stakeholders who don’t have clear visibility under the hood 
+-->
+
+
+
+<section>
+<dl>
+<dt>Assumption #1</dt>
+<dd>You have a reasonably complicated stack, bordering between could run on heroku but you’d be able to do x or it would be too expensive.</dd>
+</dl>
+</section>
+
+<!--
+Hint: do as much as you can on heroku, until you can’t
+-->
+
+<section>
+<dl>
+<dt>Assumption #2</dt>
+<dd>your stack is complicated enough that it’s challenging to run it all on your laptop … lots of setup server, database, search index, background jobs … etc</dd>
+</dl>
+</section>
+
+<section>
+<dl>
+<dt>Assumption #3</dt>
+<dd>you don’t have every role you want filled and you sort of don’t sleep at night due to all the stuff you need to accomplish or that your growing traffic is crushing your servers</dt>
+</dl>
+</section>
+
+<section>
+<p>This is one type of gap … you’re not enterprise or a unicorn … and you’re not straight up web page.</p>
+<p>Your trying to get there a startup</p>
+</section>
+
+<section>
+What is ops
+Not talking about devops … devops is a term to describe the collaboration between software people and operations teams (think big companies) also read the phenox project (great book)
+I’ll use some of the same motivations … focus on business needs
+</section>
+
+<!--
+If you’re a startup and you hire for devops you might not have enough for that person to do long term. One thing you can fill their days is to gradually involve them in feature work and have them help train the developers around there … chicken and an egg problem. 
+We for instance have a devops role????
+-->
+
+
+<section>
+The Problem
+
+require 'find'
+pdf_file_paths = []
+Find.find('/docs') do |path|
+    pdf_file_paths << path if path =~ /.*\.pdf$/
+end
+
+Vs.
+
+Find /docs -type file -iname '*.pdf'
+
+</section>
+
+<!--
+The first one doesn’t even check if it’s a file or not ;)
+How do you evaluate what is appropriate?
+I’ve run into this where I found a script that was far worse
+-->
+
+<section>
+Let’s toss in a date criteria
+require 'find'
+
+pdf_file_paths = []
+Find.find('.') do |path|
+    if File.file?(path) and path =~ /.*\.pdf$/
+      if File.mtime(path) > (Time.now - (60*120))
+          pdf_file_paths << path if path =~ /.*\.pdf$/
+      end
+    end
+end
+puts pdf_file_paths
+</section>
+
+<!--
+We check if it’s a file or directory, just for kicks and we check the time compare and collect the paths
+Or we just toss on a -mmin -120
+-->
+
+<section>
+find . -type file -iname '*.pdf' -mmin -120
+</section>
+
+<!--
+You can make a case for using the right tool … but case for whom the ops the developer the ...
+-->
+
+<section>
+So that’s a gap
+</section>
+
+<!--
+Simplified … but a real example that I found in a crontab
+-->
+
+<section>
+init scheme with service supervision
+daemon which handles starting of tasks and services during boot, stopping them during shutdown and
+
+-> supervisord (python)
+-> bluepill, godrb.com (try googling problems with god ;)) (ruby)
+-> forever (nodejs)
+
+How cool would it be if a system like linux could do something like this … oh it can ;)
+
+Learn one tool but be able to code and deploy many languages
+==Slide
+
+<!--
+That’s a gap … let linux kernel geeks deal with that while we make cool features that makes users life easier or join the opensource community
+-->
+
+<section>
+Ok that’s all developers being silly … what about ops people surely they do something wrong. Absolutely … chef anyone??
+</section>
+
+<section>
+don't all use the same user!!!
+</section>
+
+
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				],
+                parallaxBackgroundImage: 'https://architizer-prod.imgix.net/mediadata/projects/292013/023779fa.jpg?q=100&w=2280'
+			});
+		</script>
+	</body>
+</html>
