@@ -1,0 +1,32 @@
+version: '2'
+
+services:
+  api:
+    build: ./
+    command: gunicorn -b 0.0.0.0 server:API
+    volumes:
+      - "./:/code/"
+    env_file: environment_variables
+    ports:
+      - 8000:8000
+    depends_on:
+      - solr
+      - redis
+    links:
+      - solr
+      - redis
+
+  redis:
+    image: redis
+    ports:
+      - 6379
+
+  solr:
+    image: solr
+    ports:
+      - 8983:8983
+    volumes:
+      - ./solr-data:/opt/solr/server/solr/mycores
+    entrypoint:
+      - docker-entrypoint.sh
+      - solr-precreate
