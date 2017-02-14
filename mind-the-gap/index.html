@@ -1,204 +1,351 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-		<title>Mind the ops gap</title>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mind the ops gap</title>
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
-		<link rel="stylesheet" href="css/fullscreen-img.css">
-		<link rel="stylesheet" href="http://design-kit.arc.ht/css/adk.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/black.css">
+    <link rel="stylesheet" href="css/fullscreen-img.css">
+    <link rel="stylesheet" href="http://design-kit.arc.ht/css/adk.css">
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
-		<style>
-		  .reveal pre {
-				box-shadow: none
-			}
-			.reveal pre code {
-				padding: 2em;
-			}
-			.reveal section img {
-				border: 0px;
-				background: transparent;
-				box-shadow: none;
-			}
-			.reveal .glyph {
-				font-size: 400%;
-		    font-family: 'Architizer Glyphs'!important;
-		    font-weight: normal;
-		    text-transform: none;
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <style>
+      .reveal pre {
+        box-shadow: none
       }
-		</style>
+      .reveal pre code {
+        padding: 2em;
+      }
+      .reveal section img {
+        border: 0px;
+        background: transparent;
+        box-shadow: none;
+      }
+      .reveal .glyph {
+        font-size: 400%;
+        font-family: 'Architizer Glyphs'!important;
+        font-weight: normal;
+        text-transform: none;
+      }
+    </style>
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <section>
           <h1>Mind the ops gap</h1>
           <h3 class="fragment">a case for building ops chops in your development team</h3>
         </section>
-				<section>
-          <h1 style="text-transform: lowercase;">whoami</h1>
-          </section>
 
-				<section fullscreen-img='https://architizer-prod.imgix.net/mediadata/projects/292013/023779fa.jpg?q=100&w=1000'>
-					<p class='glyph logo'>B</p>
+        <!--
+          ... to close said gap
+
+          There are lots of different types of gaps in how startup work here
+          I want to focus on the gap between production and development specifically
+
+          I'll elaborate on other types of gaps that is 
+
+          I could have made the same talk about the gap between backend / frontend
+          mobile / api
+
+          This is at the core of my management approach is to identify SINGLE point of failures casued by gaps in 
+          culture, workflow, product etc
+
+          etc
+
+          lots of gaps we should be mindful of
+        -->
+
+        <section fullscreen-img='https://architizer-prod.imgix.net/mediadata/projects/292013/023779fa.jpg?q=100&w=1000'>
+          <p class='glyph logo'>B</p>
           <p>We’re hiring … just saying</p>
         </section>
 
+        <!--
+          VP of Engineering for Architizer
+          Manage and support our awesome engineering team
+
+          Architizer is a
+          Platform for Architiect to make informed purchasing decisions
+          When you buy hairbrush on amazon you operate with better information than
+          architiect buying building facades 
+
+          Current Archtizers workflow sucks ... we want to change that
+
+          Architizer started as a portfolio site architects upload their work to
+          We have collected troves of data about buildings
+          With that information we can help architects make better more informed decisions 
+          Which will make better buildings in the future
+        -->
+
         <section>
           <h2>Startups</h2>
-					<div style="background: white">
-						<img style="width: 200px" src="http://dailyurbanista.com/wp-content/uploads/2013/11/HowAboutWe-Logo2.jpg" />
-						<img style="width: 100px" src="https://mapzen.com/resources/logos/mapzen-logo-horiz-color-lit.png" />
-	          <img style="width: 100px" src="http://www.coolmarketingthoughts.com/images/motionbox.jpg" />
-	          <img style="width: 100px" src="data:image/png;base64,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" />
-				  </div>
-					<hr />
+          <div style="background: white">
+            <img style="width: 200px" src="http://dailyurbanista.com/wp-content/uploads/2013/11/HowAboutWe-Logo2.jpg" />
+            <img style="width: 100px" src="https://mapzen.com/resources/logos/mapzen-logo-horiz-color-lit.png" />
+            <img style="width: 100px" src="http://www.coolmarketingthoughts.com/images/motionbox.jpg" />
+            <img style="width: 100px" src="data:image/png;base64,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" />
+          </div>
+          <hr />
           <h2>'REAL' companies</h2>
-					<div style="background: white">
-						<img style="width: 100px" src="http://www.brycomm.com/wp-content/uploads/2011/08/Samsung-Logo.png" />
-	          <img style="width: 100px; height: 100px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/American_Express_logo.svg/200px-American_Express_logo.svg.png" />
-	          <img style="width: 80px;" src="https://betagammasigma.org/image/kaplan-logo.png" />
-	          <img style="width: 80px;" src="https://www.nordiccapital.com/media/51539/vizrt_logo_rgb.png" />
-						<img style="width: 120px;" src="http://www.logodesignlove.com/images/contentious/aol-logo.jpg" />
-				  </div>
-				</section>
-
-				<section>
-					<h1>Every place is different</h1>
-				</section>
-
-				<section>
-					<h1>Devops</h1>
-          <img src="https://images-na.ssl-images-amazon.com/images/I/51Eie0TeStL._SX333_BO1,204,203,200_.jpg" />
-				</section>
-
-				<section>
-					<h1>History</h1>
-				</section>
-
-				<section>
-					<img src="http://s7.computerhistory.org/is/image/CHM/102693357-03-01?$re-medium$" />
-				</section>
-
-				<section>
-					<img src="http://www.thagunna.com/images/big_images/1369223381software_box_design.png" />
-				</section>
-
-				<section>
-					<img src="https://i.ytimg.com/vi/HQg6LVsLxAM/maxresdefault.jpg" />
+          <div style="background: white">
+            <img style="width: 100px" src="http://www.brycomm.com/wp-content/uploads/2011/08/Samsung-Logo.png" />
+            <img style="width: 100px; height: 100px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/American_Express_logo.svg/200px-American_Express_logo.svg.png" />
+            <img style="width: 80px;" src="https://betagammasigma.org/image/kaplan-logo.png" />
+            <img style="width: 80px;" src="https://www.nordiccapital.com/media/51539/vizrt_logo_rgb.png" />
+            <img style="width: 120px;" src="http://www.logodesignlove.com/images/contentious/aol-logo.jpg" />
+          </div>
         </section>
 
-				<section>
-					<img src="http://i2.cdn.turner.com/money/dam/assets/150506112202-old-website-apple-1024x640.png" />
-				</section>
+        <!--
+          Maybe cut this slide, say I've worked at allot of different places
+        -->
 
         <section>
-			    <img src="http://www.entrepreneurweb.com/sites/entrepreneurweb.com/files/website_2_0.jpg" />
-				</section>
+          <h1>Every place is different</h1>
+        </section>
 
-				<section>
-					<img src="https://starterpad.com/blog/wp-content/uploads/2016/08/Benefits-Of-Server-Racks-for-your-Business-750x410.jpg" />
-				</section>
-
-				<section>
-					<h1>Virtualization</h1>
-				</section>
+        <!-- I've been in places where I had root access on day one
+             and other places where I never got to touch the servers -->
 
         <section>
-					<img src="http://www.syntax.com/wp-content/uploads/2014/09/cloud-gears.png" />
-				</section>
+           <div style="position: relative" class="fragment fade-in">
+            <p style="position: absolute; top: 0; right: 0;" class="fragment fade-out">Yo, can you deploy my code</p>
+           </div>
+           <div style="position: relative" class="fragment fade-in">
+            <p style="position: absolute; top: 0; left: 0;" class="fragment fade-out">Hey your code doesn't work</p>
+          </div>
+           <div style="position: relative" class="fragment fade-in">
+            <p style="position: absolute; top: 0; right: 0;" class="fragment fade-out">Yo, can you upgrade a package</p>
+          </div>
+           <div style="position: relative" class="fragment fade-in">
+            <p style="position: absolute; top: 0; left: 0;" class="fragment fade-out">The site is down ... how does your code work</p>
+          </div>
+           <div style="position: relative" class="fragment fade-in">
+            <p style="position: absolute; top: 0; right: 0;" class="fragment fade-out">Works on my laptop</p>
+          </div>
+          <img src="http://www.tleadership.com/wp-content/uploads/2015/04/Businessmen-gap-photo-small-v2.jpg" />
+        </section>
+
+        <!--
+          Ofcourse you can't have all the data from production on your laptop
+          but you can have enough representative data to simulate many of it's functions 
+          you certainly should have the same software running so you don't run into unexpected
+          versioning problems or dependencies
+        -->
 
         <section>
-					<h1>Amazon Web Services</h1>
-				</section>
+          <img src="https://images-na.ssl-images-amazon.com/images/I/51Eie0TeStL._SX333_BO1,204,203,200_.jpg" />
+        </section>
 
-				<section>
-				  <img src="https://cdn-images-1.medium.com/max/1280/1*k8n7Jx9UaLRAxum9HMp8nQ.png" />
-				</section>
+        <!--
+          Talk a little about Devops
 
-				<section>
-					<h1>Containers are not new, LXC, BSD jails, solaris zones etc</h1>
-				</section>
+          When large enterprices realize this it's translated directly into dollars and cents. Any inefficencies
+          are costly. This is where devops comes to play as a philosophy (not a job title).
 
-				<section>
-					<h1>Docker makes it easier</h1>
-				</section>
+          This makes sense where you have a large team with different groups within ... mobile, backend, database administrators,
+          linux administrators, integrators, security engineers etc. Not when you have a development group of 5 and you're moving super fast
+          but how do you move fast for a 
+          week, month, year, 2x years, 5x years
+          If you want persist your velocity you have to bridge this gap between development and production
+          Do this well and you can stay small and nimble for longer ... extend your runway and a better chance to prove out your
+          business
 
-				<section>
-					<h1>The gap</h1>
-					<img src="http://www.newbridgerecovery.com/wp-content/uploads/2016/08/sales-marketing-gap.jpg" />
-				</section>
-
-				<section>
-					<h2>Infrastructure as Code</h2>
-					<p>That's great we write code</p>
-				</section>
+          For developers this also is important because the better you know and understand the environment your code runs on
+          the better you are at discovering problems and take advantage of systems characteristics
+        -->
 
         <section>
-					<img style="height: 400px" src="https://mentalhealthcop.files.wordpress.com/2013/09/questionmark1.jpg" />
-					<p>... but what should we make it do?</p>
-				</section>
+          <h1>History</h1>
+        </section>
 
         <section>
-					<p>Let's keep on bridging that gap</p>
-				</section>
+          <img src="http://s7.computerhistory.org/is/image/CHM/102693357-03-01?$re-medium$" />
+        </section>
+
+        <!--
+          Product software engineers, those who make software for consumers haven't always been working closely with
+          people who run production systems. In the days of the mainframe for instance there wasn't even so much of a
+          market for box software. Infact people were largely expected to write their own and it wasn't really till
+          Bill Gates started intenfying this need that boxed software became a thing.
+        -->
 
         <section>
-					<p>Puppet, Chef, Ansible, SaltStack, Fabric, Docker, Terraform</p>
-				</section>
-
-				<section>
-					<p>Lets start with Docker as that is the most useful of these tools for development</p>
-				</section>
-
-				<section>
-					<p>heroku is great but it doesn't solve your local workflow</p>
-				</section>
-
-				<section>
-					<p>bridging the gap in my mind is to have almost the same running locally vs what you have running in production</p>
-				</section>
-
-				<section>
-					<h1>Small Example</h1>
-					<p>Api micro service</p>
-				</section>
+          <img src="http://i.dailymail.co.uk/i/pix/2013/10/31/article-2482131-191C9D2A00000578-349_634x425.jpg" />
+        </section>
 
         <section>
-					<pre>
-						<code>
+          <img src="http://www.thagunna.com/images/big_images/1369223381software_box_design.png" />
+        </section>
+
+        <section>
+          <img src="http://marriageservicetechnicians.com/wp-content/uploads/2017/01/under-construction.jpg" />
+        </section>
+
+        <section>
+          <img src="http://zdnet3.cbsistatic.com/hub/i/r/2014/11/25/ae53f56d-7462-11e4-a0a6-d4ae52e95e57/resize/770xauto/b1e5ddefaaa9b51813cdb05a84f372d1/dell-pe-t320-1.jpg" />
+        </section>
+
+        <!--
+          Then we have web pages on the internet where public could consume information from the web
+          well now you need like a server ... better rack one of those ... if you haven't done this
+          I highly recomend finding a way to get a crack at it ... so much fun.
+        -->
+
+        <section>
+          <img src="http://i2.cdn.turner.com/money/dam/assets/150506112202-old-website-apple-1024x640.png" />
+        </section>
+
+        <section>
+          <img src="http://www.entrepreneurweb.com/sites/entrepreneurweb.com/files/website_2_0.jpg" />
+        </section>
+
+        <section>
+          <img src="https://i.ytimg.com/vi/HQg6LVsLxAM/maxresdefault.jpg" />
+        </section>
+
+        <section>
+          <img src="https://www.technobuffalo.com/wp-content/uploads/2015/06/orginal-iphone.jpg" />
+        </section>
+
+        <!--
+          Then someone ajax guy ... discovers xhr and starts pushing web sites to do more application like things
+          This is what is called web 2.0 ... now you need lots of servers. This is the time when the whole
+          thing gets really interesting and why we in this room have the best job in the world
+          Making cool things becomes more accessible
+        -->
+
+        <section>
+          <img src="https://starterpad.com/blog/wp-content/uploads/2016/08/Benefits-Of-Server-Racks-for-your-Business-750x410.jpg" />
+        </section>
+
+        <section>
+          <h1>Virtualization</h1>
+        </section>
+
+        <section>
+          <img src="http://www.syntax.com/wp-content/uploads/2014/09/cloud-gears.png" />
+        </section>
+
+        <section>
+          <h1>Amazon Web Services</h1>
+        </section>
+
+        <section>
+          <img src="https://cdn-images-1.medium.com/max/1280/1*k8n7Jx9UaLRAxum9HMp8nQ.png" />
+        </section>
+
+        <!--
+          Containers are not new, LXC, BSD jails, solaris zones etc
+        -->
+
+        <section>
+          <h1>Platform as a Service</h1>
+        </section>
+        <!--
+          This doesn't really narrow the gap ... kinda just pretends it's not there
+        -->
+
+        <!-- 
+          Things like heroku, aws lambda ... use it if it doesn't prohibit you from solving your problem
+          Watch the costs and remember you have to work with the limitations and if you do that things will
+          go smoothly the minute you try to hack your way out of their limitations you're in for it
+        -->
+
+        <section>
+          <h1>Docker</h1>
+        </section>
+
+        <!--
+          Is the tool where I think developers and ops can really collaborate
+        -->
+
+        <section>
+          <img src="http://www.newbridgerecovery.com/wp-content/uploads/2016/08/sales-marketing-gap.jpg" />
+        </section>
+
+        <!-- the keystone -->
+
+        <section>
+          <h2>Infrastructure as Code</h2>
+        </section>
+
+        <section>
+          <img src="http://img.manesto.com/upload/posts/images/7z0Y4G54D7uI1rztsVPwI3.jpg" />
+          <p>That's great we write code</p>
+        </section>
+
+        <section>
+          <img style="height: 400px" src="https://mentalhealthcop.files.wordpress.com/2013/09/questionmark1.jpg" />
+          <p>... but what should we make it do?</p>
+        </section>
+
+        <section>
+          <p>Let's bridge that gap</p>
+        </section>
+        <!--
+          Understand how your code gets to produciton responsibly ... what's the best way to deploy to servers
+          provision your servers. Go a little deeper than just the surface and name drop technologies.
+          I've been trying to get the sense of this world for my entire carrer and I still feel like I am only
+          scratching the surface ... and barely able to talk to operations professionals. But getting your
+          organization into the mindset of understanding and doing the right thing is always valuable
+
+          Keep things simple ... complexity is the enemy ... infact you're paid to make complex things simple
+        -->
+
+        <section>
+          <p>Puppet, Chef, Ansible, SaltStack, Fabric, Docker, Terraform, Packer</p>
+        </section>
+
+        <section>
+          <img src="http://xzdl43v0mdf2m45tz2aj7kkv35.wpengine.netdna-cdn.com/wp-content/uploads/2012/03/closing-the-gap-780x400.jpg" />
+        </section>
+
+        <section>
+          <p>I'll do a quick Demo of what Docker looks like in development workflow</p>
+        </section>
+
+        <section>
+          <h1>Small Example</h1>
+          <p>Api micro service</p>
+        </section>
+
+        <section>
+          <pre>
+            <code>
 ├── Dockerfile
 ├── README.md
 ├── docker-compose.yml
 ├── environment_variables
 ├── requirements.txt
 ├── server.py
-						</code>
-					</pre>
-				</section>
+            </code>
+          </pre>
+        </section>
 
         <section>
-					<pre>
-						<code>
+          <pre>
+            <code>
 ├── Dockerfile
-						</code>
-					</pre>
+            </code>
+          </pre>
 
-					<pre>
-						<code>
+          <pre>
+            <code>
 FROM python:3
 
 ENV PYTHONUNBUFFERED 1
@@ -206,33 +353,33 @@ ADD . /code
 WORKDIR /code
 RUN pip install --upgrade pip
 RUN pip install -r /code/requirements.txt
-						</code>
-					</pre>
-				</section>
+            </code>
+          </pre>
+        </section>
 
         <section>
-					<pre>
-						<code>
+          <pre>
+            <code>
 ├── requirements.txt
-						</code>
-					</pre>
+            </code>
+          </pre>
 
-					<pre>
-						<code>
+          <pre>
+            <code>
 falcon==1.1.0
 gunicorn==19.6.0
-						</code>
-					</pre>
-				</section>
+            </code>
+          </pre>
+        </section>
 
         <section>
-					<pre>
-						<code>
+          <pre>
+            <code>
 ├── docker-compose.yml
-						</code>
-					</pre>
-					<pre>
-						<code>
+            </code>
+          </pre>
+          <pre>
+            <code>
 version: '2'
 services:
   api:
@@ -243,19 +390,19 @@ services:
     env_file: environment_variables
     ports:
       - 8000:8000
-						</code>
-					</pre>
-		</section>
+            </code>
+          </pre>
+    </section>
 
      <section>
-				<pre>
-					<code>
+        <pre>
+          <code>
 ├── server.py
-					</code>
-				</pre>
+          </code>
+        </pre>
 
-				<pre>
-					<code>
+        <pre>
+          <code>
 """ light weight api """
 import json
 import falcon
@@ -268,48 +415,48 @@ class DemoResource:
 
 API = falcon.API()
 API.add_route('/demo', DemoResource())
-					</code>
-				</pre>
-			</section>
+          </code>
+        </pre>
+      </section>
 
      <section>
-				<pre>
-					<code>
+        <pre>
+          <code>
 docker-compose up
-					</code>
-				</pre>
-			</section>
+          </code>
+        </pre>
+      </section>
 
      <section>
-				<pre>
-					<code>
+        <pre>
+          <code>
 curl localhost:8000/demo
-					</code>
-				</pre>
-			</section>
+          </code>
+        </pre>
+      </section>
 
 
-			</div>
-		</div>
+      </div>
+    </div>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
 
-		<script>
-			// More info https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				history: true,
+    <script>
+      // More info https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        history: true,
 
-				// More info https://github.com/hakimel/reveal.js#dependencies
-				dependencies: [
-					{ src: 'plugin/highlight/highlight.js' },
-					{ src: 'lib/js/fullscreen-img.js' },
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				],
-			});
-		</script>
-	</body>
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+          { src: 'plugin/highlight/highlight.js' },
+          { src: 'lib/js/fullscreen-img.js' },
+          { src: 'plugin/markdown/marked.js' },
+          { src: 'plugin/markdown/markdown.js' },
+          { src: 'plugin/notes/notes.js', async: true },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ],
+      });
+    </script>
+  </body>
 </html>
