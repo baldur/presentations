@@ -30,6 +30,10 @@
         font-weight: normal;
         text-transform: none;
       }
+      .reveal p {
+        text-align: left;
+        margin-bottom: 2em;
+      }
     </style>
 
     <!-- Printing and PDF exports -->
@@ -50,218 +54,218 @@
           <h3 class="fragment">a case for building ops chops in your development team</h3>
         </section>
 
-        <!--
-          ... to close said gap
-
-          There are lots of different types of gaps in
-          how startups work
-          here
-          I want to focus on the gap between production and development, specifically
-
-          I'll elaborate on other types of gaps as well
-
-          I could have made the same talk about the gap between backend / frontend
-          mobile / api ... product / engineering etc
-
-          As an engineer I alwaysed focused on trying to eliminate the single point of failure
-          As a manager I still focus single point of failures including cultural
-
-          This is easier said than done,
-
-          one way tackle it
-          is to focus on the GAPs
-          and insuffciencies they cause,
-          in your culture,
-            workflow,
-            product
-              and
-            engineering practices
-
-          lots of gaps we should be mindful of
-
-          I work at Architizer ... which as a product focuses on the gap between
-          Architects and product manufactures
-        -->
-
         <section fullscreen-img='https://architizer-prod.imgix.net/mediadata/projects/292013/023779fa.jpg?q=100&w=1000'>
-          <p class='glyph logo'>B</p>
-          <p>We’re hiring … just saying</p>
+          <p style="text-align: center" class='glyph logo'>B</p>
         </section>
-
-        <!--
-          Architizer is
-
-          a Platform for Architiects,
-            founded by architects,
-          to make informed,
-          purchasing decisions for their projects
-
-          The current workflow for architiects lacks the basic things
-          we are accustom to as consumer in the modern word
-
-          When I buy hairbrush on amazon I typically
-          operate on better information than
-
-          architiects when specifying for:
-
-            building emergency call box,
-
-            radiant heater
-
-              or
-
-            wall hung dual flush toilets
-
-          Current Architects workflow sucks ... we want to change that
-
-          Architizer started as a portfolio site architects
-          uploaded their work to.
-
-          We have collected troves of data about buildings
-          With that information we can
-          help architects make better more informed decisions
-          Which will make better buildings in the future
-        -->
 
         <section>
-          <h1>Every startup is just a little bit different</h1>
-          <p>but share many of the same problems</p>
+          <h1>Every startup is different</h1>
+          <p style="text-align: center">but share many of the same problems</p>
         </section>
-        <!--
-          I've worked with allot of startups
-
-          Worked at a dating website once
-          happy valentines day incidentally
-          ... while I was there I certinly wouldn't have
-          had time to go to a meetup on valentines day ;)
-
-          One thing all of these places had in common
-          atleast, when I joined was this
-        -->
 
         <section>
            <div style="position: relative" class="fragment fade-in">
             <p style="position: absolute; top: 0; right: 0;" class="fragment fade-out">Yo, can you deploy my code</p>
            </div>
            <div style="position: relative" class="fragment fade-in">
-            <p style="position: absolute; top: 0; left: 0;" class="fragment fade-out">your code doesn't work</p>
+            <p style="position: absolute; top: 0; left: 0;" class="fragment fade-out">your code doesn't work
+            <br />
+            and it sucks</p>
           </div>
            <div style="position: relative" class="fragment fade-in">
-            <p style="position: absolute; top: 0; right: 0;" class="fragment fade-out">can you upgrade x on the server</p>
+            <p style="position: absolute; top: 0; right: 0;" class="fragment fade-out">install the lastest
+            <br />
+            version of node</p>
           </div>
            <div style="position: relative" class="fragment fade-in">
-            <p style="position: absolute; top: 0; left: 0;" class="fragment fade-out">The site is down, what does your code do?</p>
+            <p style="position: absolute; top: 0; left: 0;" class="fragment fade-out">Now the site is down,
+            <br />
+            what does your code do?</p>
           </div>
            <div style="position: relative" class="fragment fade-in">
-            <p style="position: absolute; top: 0; right: 0;" class="fragment fade-out">It's x works fine on my laptop</p>
+            <p style="position: absolute; top: 0; right: 0;" class="fragment fade-out">It's a algorithm
+            <br />
+            it's super cool and it works
+            <br />
+            fine on my laptop</p>
+          </div>
+           <div style="position: relative" class="fragment fade-in">
+            <p style="position: absolute; top: 0; left: 0;" class="fragment fade-out">Sigh, there goes my
+            <br />
+            weekend
+            </p>
           </div>
           <img src="http://www.tleadership.com/wp-content/uploads/2015/04/Businessmen-gap-photo-small-v2.jpg" />
         </section>
 
-        <!--
-          This is all too common ... your code sucks and works on my laptop
-          that's my favorite.
+        <section>
+          <h1>It has to do with <span class="fragment">deadlines</span></h1>
+          <p>
+            <span class="fragment">Idea</span>
+            <span class="fragment">, Design</span>
+            <span class="fragment">, UX</span>
+            <span class="fragment">, Product</span>
+            <span class="fragment">, Coding</span>
+            <span class="fragment">, Deploying</span>
+          </p>
 
-          Pretty sure I've both heard that one and used it in the past
-
-          But guess what ... "works on my laptop" might just become legitimate thing to say
-          rings true ... because it could be running close to identical stack
-
-          More on that a little later  ...
-
-          Pleases I've been are so different and the gap between
-
-          Where I had root access on day one
-
-          AND
-
-          I never got to server access
-
-          There is lots of literature about this stuff
-        -->
-
+          <p class="fragment">This is waterfall stuff ... and ops always is last in line and
+             things get lobbed over the wall
+          </p>
+        </section>
 
         <section>
-          <p>You can't know about the entire stack</p>
+          <p>In startups operations concerns sometimes gets
+             pushed down in priority</p>
+          <p class="fragment">
+            Operational effeciences are critical thing to any business
+          </p>
+          <p class="fragment">
+            In big businesses it often translates directly to $$$ <br />
+            Start-up economoics are a little more fuzzy
+          </p>
         </section>
-        <!--
-          This is true but try to develop a wide spectrum with maybe one/two
-          specialty.
-          And show healthy curiosity to other areas and assum you know nothing
-          when asking questions to people with domain expertise
-          also think critically and don't assume things are so just because
-          there is a blog about it
-        -->
 
         <section>
-          <p>Lack of empathy or understanding of other domains</p>
+          <h2>
+            This is a gap
+          </h2>
         </section>
-        <!--
-          It takes allot of people to get a good successful company off the ground
-          marketing, sales, content creators, product, engineers
-          ... lots of gaps
-        -->
 
         <section>
-          <p>Fear of deploying or making changes</p>
+          <h2>How do we as engineers solve this?</h2>
         </section>
-        <!--
-          blameless culture, automate things, don't have provisioning scripts
-          that are destructive with out a prompt
-          have tests and good process ...
-          also operate fearlessly ...
-          have the confidence if something goes bad you have a way to recover
-        -->
+
+        <section>
+          <h2>Communication</h2>
+        </section>
+
+        <section>
+          <p>To communicate we need to know and understand the problem(s)</p>
+          <p class="fragment">Including business problems</p>
+          <p class="fragment">Design challenges</p>
+        </section>
+
+        <section>
+          <p>Be curious about everything and try to learn everything</p>
+          <p class="fragment">about the business</p>
+          <p class="fragment">about design process</p>
+          <p class="fragment">about the backend, frontend, database, ops</p>
+        </section>
+
+        <section>
+          <p>You can't know about the entire stack ... <br />no harm in trying</p>
+          <p class="fragment">except for burnout ... please be careful</p>
+        </section>
+
+        <section>
+          <p>Show empathy for people with different knowledge or specialties</p>
+          <p>Assume good intentions and communicate differences</p>
+        </section>
+
+        <section>
+          <p>Focus on getting priorities right</p>
+        </section>
+
+        <section>
+          <h2>Lets focus on what engineering can do</h2>
+        </section>
+
+        <section>
+          <h2>Create a blameless culture</h2>
+          <p class="fragment">Being afraid and rational at the same time is not excacly what we humans excel at</p>
+        </section>
+
+        <section>
+          <h2>Create an environment where engineering isn't the bottleneck</h2>
+        </section>
+
+        <section>
+          <h2>Ask these questions</h2>
+          <p class="fragment">Can everyone (safely) access to the data they need to make decisions</p>
+          <p class="fragment">Can everyone (safely) deploy copy changes</p>
+          <p class="fragment">Can designers (safely) push visual tweaks</p>
+          <p class="fragment">...</p>
+        </section>
+
+        <section>
+          <h2>Automate everything</h2>
+          <p class="fragment">automate deploys</p>
+          <p class="fragment">automate backups</p>
+          <p class="fragment">automate server provisioning</p>
+          <p class="fragment">create an automated infrastructure</p>
+        </section>
+
+        <section>
+          <h2>Infrastructure as Code</h2>
+        </section>
+        <section fullscreen-img="https://media.giphy.com/media/toXKzaJP3WIgM/giphy.gif">
+          <h1>Go fast</h1>
+        </section>
+
+        <section>
+          <h2>You have lots of options</h2>
+          <p><span class="fragment">Chef</span>
+             <span class="fragment">, Puppet</span>
+             <span class="fragment">, ansible</span>
+             <span class="fragment">, saltstack</span>
+             <span class="fragment">, terraform</span>
+             <span class="fragment">, cloudformation</span>
+             <span class="fragment">, packer</span>
+             <span class="fragment">, docker<p>
+               <p class="fragment">All great tools to allow you to create infrasturcture with code</p>
+        </section>
+
+        <section>
+          <img src="http://img.manesto.com/upload/posts/images/7z0Y4G54D7uI1rztsVPwI3.jpg" />
+          <p style="text-align: center">That's great we write code</p>
+        </section>
+
+        <section>
+          <p>Pick one, dive in these things it's not magic</p>
+          <p>Start small, and then expand</p>
+        </section>
+
+        <section>
+          <img style="height: 400px" src="https://mentalhealthcop.files.wordpress.com/2013/09/questionmark1.jpg" />
+          <p style="text-align: center">... but what should we make it do?</p>
+        </section>
+
+        <section>
+          <p>
+            The knowledge gap isn't neccisarily any of the tools mentioned before
+            </br>
+          <span class="fragment">it's usuall lack of systems or linux knowledge</span>
+            </br>
+            <span class="fragment">... or a <strong>typo</strong></span>
+          </p>
+        </section>
+
+        <section>
+          <h2>Some other observations of starups</h2>
+        </section>
 
         <section>
           <p>Everyone accessing machines with the same user ... often without ssh keys</p>
         </section>
-        <!--
-          Don't ... it's easy to make accounts for everyone ... also
-          if things are truely automated ssh access to machines should
-          be used on rare occations
-        -->
-
-        <section>
-          <p>I don't know chef, puppet, docker etc<p>
-        </section>
-        <!--
-          Dive in ... these things aren't complicated to start with. I often find
-          that lackof linux knowledge is the problem
-        -->
 
         <section>
           <p>Systems are out of date<p>
         </section>
-        <!--
-          Make your infrastructure discarable and build automated ...
-          that makes it easy to keep systems up to date
-        -->
 
         <section>
-          <p>Automating server provisioning is timeconsuming and hard</p>
+          <p>snowflake servers</p>
+          <p class="fragment">The assumption that automating things like server provisioning is timeconsuming and hard</p>
+          <p class="fragment">Repeatable server builds are such a treat</p>
+          <p class="fragment">Even better if they are totally discardable</p>
         </section>
-        <!--
-          Managing your bespoke server is easy on day one but after months
-          you have no idea what is running on that server and if it gets
-          currupt ... ooof
-          snowflakes are the worst
-        -->
 
         <section>
-          <p>Networking and security</p>
+          <p>Networking and firewall mess</p>
         </section>
-        <!--
-          Get someone to come help you for an hour ... or go to aws loft in soho
-          make everything on an internal network and expose very few things to
-          the public vpn, or hole for your office ip
-          only the loadbalancers should be open to public and if you need it
-          ssh to your machines assuming you have individual user accounts
-          and nothing shared
-        -->
 
         <section>
-          <p>All real problems</p>
+          <p>All real problems, many of which can be solved together as a team</p>
         </section>
 
         <section>
@@ -273,11 +277,6 @@
         <section>
           <p>Work together, as a team</p>
         </section>
-        <!--
-          I've heard from many venture investors that what they look at when
-          they decide to fund companies is the team and evaluate their
-          ability to work as a team ... multipliers
-        -->
 
         <section>
           <img src="https://images-na.ssl-images-amazon.com/images/I/51Eie0TeStL._SX333_BO1,204,203,200_.jpg" />
@@ -479,7 +478,12 @@
         -->
 
         <section>
+          <p>Lots of magic out there</p>
+        </section>
+
+        <section>
           <img src="http://www.syntax.com/wp-content/uploads/2014/09/cloud-gears.png" />
+          <p>The cloud</p>
         </section>
 
         <!--
@@ -502,6 +506,7 @@
 
         <section>
           <img src="https://cdn-images-1.medium.com/max/1280/1*k8n7Jx9UaLRAxum9HMp8nQ.png" />
+          <p>Containers</p>
         </section>
 
         <!--
@@ -511,8 +516,10 @@
 
 
         <section>
-          <h1>Platform as a Service</h1>
+          <img src="http://www.bizruntime.com/master/images/PaaS.png" />
+          <p>Platform as a Service</p>
         </section>
+
         <!--
           Before I go any further I'd like to address the elephant in the room
           PaaS services. Platform as a service.
@@ -544,6 +551,12 @@
         -->
 
         <section>
+          <img src="http://xzdl43v0mdf2m45tz2aj7kkv35.wpengine.netdna-cdn.com/wp-content/uploads/2012/03/closing-the-gap-780x400.jpg" />
+          <p>Let's bridge that gap</p>
+        </section>
+
+
+        <section>
           <h1>Docker</h1>
         </section>
 
@@ -551,29 +564,6 @@
           Is the tool where I think developers and ops can really collaborate
         -->
 
-        <section>
-          <img src="http://www.newbridgerecovery.com/wp-content/uploads/2016/08/sales-marketing-gap.jpg" />
-        </section>
-
-        <!-- the keystone -->
-
-        <section>
-          <h2>Infrastructure as Code</h2>
-        </section>
-
-        <section>
-          <img src="http://img.manesto.com/upload/posts/images/7z0Y4G54D7uI1rztsVPwI3.jpg" />
-          <p>That's great we write code</p>
-        </section>
-
-        <section>
-          <img style="height: 400px" src="https://mentalhealthcop.files.wordpress.com/2013/09/questionmark1.jpg" />
-          <p>... but what should we make it do?</p>
-        </section>
-
-        <section>
-          <p>Let's bridge that gap</p>
-        </section>
         <!--
           Understand how your code gets to produciton responsibly ... what's the best way to deploy to servers
           provision your servers. Go a little deeper than just the surface and name drop technologies.
@@ -585,15 +575,7 @@
         -->
 
         <section>
-          <p>Puppet, Chef, Ansible, SaltStack, Fabric, Docker, Terraform, Packer</p>
-        </section>
-
-        <section>
-          <img src="http://xzdl43v0mdf2m45tz2aj7kkv35.wpengine.netdna-cdn.com/wp-content/uploads/2012/03/closing-the-gap-780x400.jpg" />
-        </section>
-
-        <section>
-          <p>I'll do a quick Demo of what Docker looks like in development workflow</p>
+          <p>I'll do a pithy example of what Docker looks like in development workflow</p>
         </section>
 
         <section>
